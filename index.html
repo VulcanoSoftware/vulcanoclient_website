@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VulcanoClient</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+    <nav>
+        <div class="logo">VulcanoClient</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#download">Download</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>VulcanoClient</h1>
+            <p>Ervaar Minecraft zoals nooit tevoren</p>
+            <a href="#download" class="cta-button">Download Nu</a>
+        </div>
+    </section>
+
+    <section id="features">
+        <h2 class="section-title" data-aos="fade-down">Features</h2>
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3>Verbeterde Prestaties</h3>
+                <p>Geniet van hogere FPS en soepelere gameplay</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Moderne GUI</h3>
+                <p>Strak en gebruiksvriendelijk interface design</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-cogs"></i>
+                <h3>Aanpasbare Instellingen</h3>
+                <p>Pas je spelervaring aan naar wens</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fab fa-python"></i>
+                <h3>Open Source</h3>
+                <p>Volledig ontwikkeld in Python en beschikbaar op GitHub</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Veilig</h3>
+                <p>100% virusvrij en veilig in gebruik</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                <i class="fas fa-puzzle-piece"></i>
+                <h3>Breed Compatible</h3>
+                <p>Werkt met Minecraft Launcher, TLauncher en Lunar Client</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                <i class="fas fa-cube"></i>
+                <h3>Fabric Modloader</h3>
+                <p>Gebouwd op het snelle en lichte Fabric platform voor optimale prestaties</p>
+            </div>
+        </div>
+        
+        <div class="feature-showcase" data-aos="fade-up">
+            <div class="showcase-nav">
+                <button class="showcase-btn active" data-target="performance">Performance</button>
+                <button class="showcase-btn" data-target="gui">GUI</button>
+                <!--
+                <button class="showcase-btn" data-target="mods">Mods</button>
+                -->
+            </div>
+            <div class="showcase-content">
+                <div class="showcase-item active" id="performance">
+                    <img src="performance.webp" alt="Performance vergelijking" class="showcase-img">
+                    <h3>Superieure Performance</h3>
+                    <p>Tot 300% meer FPS dan vanilla Minecraft</p>
+                </div>
+                <div class="showcase-item" id="gui">
+                    <img src="gui.webp" alt="GUI voorbeeld" class="showcase-img">
+                    <h3>Moderne Interface</h3>
+                    <p>Een simpele, duidelijke en moderne gebruikersinterface</p>
+                </div>
+                <!--
+                <div class="showcase-item" id="mods">
+                    <img src="mods.jpg" alt="Mod compatibiliteit" class="showcase-img">
+                    <h3>Mod Support</h3>
+                    <p>Compatibel met populaire Fabric mods</p>
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item" data-aos="zoom-in">
+                <span class="stat-number" data-target="0">
+                    <span class="loading-dots">...</span>
+                </span>
+                <span class="stat-label">Downloads</span>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+                <span class="stat-number" data-target="150">0</span>
+                <span class="stat-label">FPS Boost</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="download">
+        <h2>Download VulcanoClient</h2>
+        <div class="download-container">
+            <a href="https://github.com/VulcanoSoftware/vulcanoclient/releases/download/1.6/vulcanoclient_launcher.exe" class="download-button">Download voor Windows</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 VulcanoClient. Alle rechten voorbehouden.</p>
+    </footer>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://kit.fontawesome.com/your-kit-code.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

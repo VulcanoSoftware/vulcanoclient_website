@@ -130,6 +130,10 @@ function isInViewport(element) {
     );
 }
 
+let huidigjaar = new Date().getFullYear();
+let foottext = document.getElementById('footercopy');
+foottext.innerHTML = `&copy; ${huidigjaar} VulcanoClient. Alle rechten voorbehouden.`;
+
 fetchDownloadCount();
 
 setInterval(fetchDownloadCount, 300000);

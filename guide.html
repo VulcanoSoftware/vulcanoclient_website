@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VulcanoClient Installation Guide</title>
+    <style>
+        /* Windows 7 base styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+            color: #000000;
+            background-color: #ECE9D8;
+            margin: 0;
+            padding: 0;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC');
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+        }
+        
+        /* Window styling */
+        .window {
+            background-color: #FFFFFF;
+            border: 1px solid #999999;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+            margin: 20px auto;
+            max-width: 1000px;
+            overflow: hidden;
+            position: relative;
+            transform-origin: top center;
+        }
+        
+        body.dark-mode .window {
+            background-color: #2a2a2a;
+            border-color: #444;
+        }
+        
+        /* Title bar with proper Windows 7 gradient */
+        .title-bar {
+            background: linear-gradient(to bottom, #3C7FB1 0%, #2A5F8A 100%);
+            color: white;
+            padding: 8px 12px;
+            font-weight: bold;
+            font-size: 14px;
+            border-bottom: 1px solid #1E3F5E;
+            position: relative;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .title-bar:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* Content area with subtle texture */
+        .content {
+            padding: 20px;
+            background-color: #F0F0F0;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC');
+            transition: background-color 0.3s ease;
+        }
+        
+        body.dark-mode .content {
+            background-color: #333;
+        }
+        
+        /* Headings with better contrast and Windows 7 style */
+        h1 {
+            color: #1E3F5E;
+            font-size: 20px;
+            margin-top: 0;
+            border-bottom: 1px solid #CCCCCC;
+            padding-bottom: 10px;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+            background: linear-gradient(to bottom, #F9F9F9, #ECECEC);
+            padding: 10px 15px;
+            border-radius: 3px;
+            box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+            border: 1px solid #D9D9D9;
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode h1 {
+            color: #a8d0ff;
+            background: linear-gradient(to bottom, #3a3a3a, #2d2d2d);
+            border-color: #444;
+            text-shadow: none;
+        }
+        
+        h2 {
+            color: #1E3F5E;
+            font-size: 16px;
+            margin-top: 25px;
+            background: linear-gradient(to bottom, #F1F5FB, #E4EBF5);
+            padding: 7px 12px;
+            border-left: 4px solid #3C7FB1;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+            box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+            border: 1px solid #D9D9D9;
+            border-radius: 3px 0 0 3px;
+            transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        body.dark-mode h2 {
+            color: #a8d0ff;
+            background: linear-gradient(to bottom, #2a3a4a, #1e2a38);
+            border-color: #444;
+            text-shadow: none;
+        }
+        
+        h2:hover {
+            background: linear-gradient(to bottom, #E8F2FC, #DBE9F8);
+            transform: translateX(2px);
+        }
+        
+        body.dark-mode h2:hover {
+            background: linear-gradient(to bottom, #32465a, #243344);
+        }
+        
+        h3 {
+            color: #1E3F5E;
+            font-size: 14px;
+            margin-top: 20px;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+            padding: 5px 8px;
+            background: linear-gradient(to bottom, #F8F8F8, #EBEBEB);
+            border-radius: 3px;
+            border: 1px solid #D9D9D9;
+            box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+            transition: all 0.2s ease;
+        }
+        
+        body.dark-mode h3 {
+            color: #a8d0ff;
+            background: linear-gradient(to bottom, #3a3a3a, #2d2d2d);
+            border-color: #444;
+            text-shadow: none;
+        }
+        
+        h3:hover {
+            background: linear-gradient(to bottom, #F0F0F0, #E3E3E3);
+        }
+        
+        body.dark-mode h3:hover {
+            background: linear-gradient(to bottom, #323232, #252525);
+        }
+        
+        p {
+            margin: 10px 0;
+            color: #333333;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+        
+        body.dark-mode p {
+            color: #e0e0e0;
+        }
+        
+        /* Windows 7 style buttons */
+        .button {
+            display: inline-block;
+            background: linear-gradient(to bottom, #F9F9F9 0%, #E0E0E0 100%);
+            border: 1px solid #999999;
+            color: #000000;
+            padding: 5px 15px;
+            text-decoration: none;
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: 3px;
+            box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset, 0 1px 2px rgba(0,0,0,0.1);
+            text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+            transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        body.dark-mode .button {
+            background: linear-gradient(to bottom, #4a4a4a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            border-color: #555;
+            text-shadow: none;
+        }
+        
+        .button:hover {
+            background: linear-gradient(to bottom, #E8F2FC 0%, #D5E5F7 100%);
+            border-color: #7EB6EA;
+            box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset, 0 1px 3px rgba(0,0,0,0.2);
+            transform: translateY(-1px);
+        }
+        
+        body.dark-mode .button:hover {
+            background: linear-gradient(to bottom, #3a5a7a 0%, #2a4a6a 100%);
+        }
+        
+        .button:active {
+            background: linear-gradient(to bottom, #D2E5F8 0%, #E6F2FC 100%);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset;
+            transform: translateY(1px);
+        }
+        
+        body.dark-mode .button:active {
+            background: linear-gradient(to bottom, #2a4a6a 0%, #3a5a7a 100%);
+        }
+        
+        .button:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0));
+            border-radius: 3px 3px 0 0;
+            pointer-events: none;
+        }
+        
+        body.dark-mode .button:before {
+            background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0));
+        }
+        
+        /* Image containers with Windows 7 style */
+        .image-container {
+            text-align: center;
+            margin: 15px 0;
+            padding: 8px;
+            background-color: #FFFFFF;
+            border: 1px solid #CCCCCC;
+            border-radius: 3px;
+            box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset, 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            cursor: pointer;
+        }
+        
+        body.dark-mode .image-container {
+            background-color: #3a3a3a;
+            border-color: #555;
+        }
+        
+        .image-container:hover {
+            border-color: #7EB6EA;
+            box-shadow: 0 0 10px rgba(126, 182, 234, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            border: 1px solid #DDDDDD;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        body.dark-mode .image-container img {
+            border-color: #555;
+        }
+        
+        .caption {
+            font-style: italic;
+            color: #666666;
+            margin-top: 8px;
+            font-size: 12px;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+            transition: color 0.3s ease;
+        }
+        
+        body.dark-mode .caption {
+            color: #b0b0b0;
+        }
+        
+        /* Tabs with Windows 7 style */
+        .tabs {
+            display: flex;
+            background: linear-gradient(to bottom, #F1F1F1 0%, #E5E5E5 100%);
+            border-bottom: 1px solid #CCCCCC;
+            padding: 0;
+            margin: 0 0 15px 0;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+            border-radius: 3px 3px 0 0;
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode .tabs {
+            background: linear-gradient(to bottom, #3a3a3a 0%, #2d2d2d 100%);
+            border-color: #555;
+        }
+        
+        .tab {
+            padding: 8px 20px;
+            background: transparent;
+            border: 1px solid transparent;
+            border-bottom: none;
+            cursor: pointer;
+            font-size: 13px;
+            position: relative;
+            bottom: -1px;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+            transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+            color: #333333;
+        }
+        
+        body.dark-mode .tab {
+            color: #ffffff;
+            text-shadow: none;
+        }
+        
+        .tab:hover {
+            background: linear-gradient(to bottom, #F8F8F8 0%, #ECECEC 100%);
+            border-color: #CCCCCC;
+            border-radius: 3px 3px 0 0;
+            color: #000000;
+        }
+        
+        body.dark-mode .tab:hover {
+            background: linear-gradient(to bottom, #4a4a4a 0%, #3a3a3a 100%);
+            color: #ffffff;
+        }
+        
+        .tab.active {
+            background: linear-gradient(to bottom, #FFFFFF 0%, #F5F5F5 100%);
+            border-color: #CCCCCC;
+            border-radius: 3px 3px 0 0;
+            font-weight: bold;
+            box-shadow: inset 0 1px 0 #FFFFFF;
+            color: #000000;
+            border-top: 2px solid #3C7FB1;
+            padding-top: 6px;
+        }
+        
+        body.dark-mode .tab.active {
+            background: linear-gradient(to bottom, #4a4a4a 0%, #3a3a3a 100%);
+            color: #ffffff;
+            border-color: #555;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 15px;
+            background-color: #FFFFFF;
+            border: 1px solid #CCCCCC;
+            border-top: none;
+            border-radius: 0 0 3px 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            animation: fadeIn 0.3s ease-out;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        body.dark-mode .tab-content {
+            background-color: #333;
+            border-color: #555;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Note boxes with Windows 7 style */
+        .note {
+            background: linear-gradient(to bottom, #FFFEDF 0%, #FFF8B5 100%);
+            border-left: 4px solid #F9D71C;
+            padding: 12px 15px;
+            margin: 15px 0;
+            font-size: 13px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 0 3px 3px 0;
+            border: 1px solid #E6D68B;
+            border-left: none;
+            transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        body.dark-mode .note {
+            background: linear-gradient(to bottom, #3a3a2a 0%, #2d2d1a 100%);
+            border-color: #5a5a3a;
+            color: #f0f0f0;
+        }
+        
+        .note:hover {
+            box-shadow: 0 0 12px rgba(249, 215, 28, 0.4);
+            transform: translateX(3px);
+        }
+        
+        .note h3 {
+            margin-top: 0;
+            color: #8E6D0F;
+            background: none;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+            transition: color 0.3s ease;
+        }
+        
+        body.dark-mode .note h3 {
+            color: #ffd700;
+        }
+        
+        /* Steps with Windows 7 style */
+        .step {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dotted #CCCCCC;
+            transition: all 0.3s ease;
+            background: linear-gradient(to bottom, #FFFFFF, #F9F9F9);
+            padding: 15px;
+            border-radius: 3px;
+            border: 1px solid #DDDDDD;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        body.dark-mode .step {
+            background: linear-gradient(to bottom, #3a3a3a, #2d2d2d);
+            border-color: #444;
+            color: #f0f0f0;
+        }
+        
+        .step:hover {
+            background: linear-gradient(to bottom, #F5F9FF, #EFF5FF);
+            box-shadow: 0 2px 6px rgba(126, 182, 234, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        body.dark-mode .step:hover {
+            background: linear-gradient(to bottom, #3a4a5a, #2d3a4a);
+        }
+        
+        .step:last-child {
+            border-bottom: none;
+        }
+        
+        /* Authentic Windows 7 scrollbar */
+        ::-webkit-scrollbar {
+            width: 17px;
+            height: 17px;
+            background-color: #F1F1F1;
+        }
+        
+        body.dark-mode ::-webkit-scrollbar {
+            background-color: #2a2a2a;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background-color: #F1F1F1;
+            border-left: 1px solid #E3E3E3;
+            box-shadow: inset 1px 0 0 rgba(255,255,255,0.8);
+        }
+        
+        body.dark-mode ::-webkit-scrollbar-track {
+            background-color: #2a2a2a;
+            border-left-color: #444;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background-color: #C1C1C1;
+            border: 4px solid rgba(0,0,0,0);
+            background-clip: padding-box;
+            border-radius: 8px;
+            box-shadow: 
+                inset -1px -1px 0px rgba(0,0,0,0.05),
+                inset 1px 1px 0px rgba(0,0,0,0.05);
+        }
+        
+        body.dark-mode ::-webkit-scrollbar-thumb {
+            background-color: #5a5a5a;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #A8A8A8;
+            border: 4px solid rgba(0,0,0,0);
+            background-clip: padding-box;
+        }
+        
+        body.dark-mode ::-webkit-scrollbar-thumb:hover {
+            background-color: #7a7a7a;
+        }
+        
+        ::-webkit-scrollbar-thumb:active {
+            background-color: #939393;
+        }
+        
+        body.dark-mode ::-webkit-scrollbar-thumb:active {
+            background-color: #6a6a6a;
+        }
+        
+        ::-webkit-scrollbar-corner {
+            background-color: #F1F1F1;
+        }
+        
+        body.dark-mode ::-webkit-scrollbar-corner {
+            background-color: #2a2a2a;
+        }
+        
+        /* Scrollbar buttons - Windows 7 style */
+        ::-webkit-scrollbar-button {
+            width: 17px;
+            height: 17px;
+            background-color: #F1F1F1;
+            border: 1px solid #E3E3E3;
+            box-shadow: inset 1px 1px 0 rgba(255,255,255,0.8);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        body.dark-mode ::-webkit-scrollbar-button {
+            background-color: #2a2a2a;
+            border-color: #444;
+        }
+        
+        ::-webkit-scrollbar-button:vertical:decrement {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'><path fill='%23666666' d='M0 5l4-5 4 5z'/></svg>");
+        }
+        
+        body.dark-mode ::-webkit-scrollbar-button:vertical:decrement {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'><path fill='%23aaaaaa' d='M0 5l4-5 4 5z'/></svg>");
+        }
+        
+        ::-webkit-scrollbar-button:vertical:increment {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'><path fill='%23666666' d='M0 0l4 5 4-5z'/></svg>");
+        }
+        
+        body.dark-mode ::-webkit-scrollbar-button:vertical:increment {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'><path fill='%23aaaaaa' d='M0 0l4 5 4-5z'/></svg>");
+        }
+        
+        ::-webkit-scrollbar-button:horizontal:decrement {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='5' height='8' viewBox='0 0 5 8'><path fill='%23666666' d='M5 0l-5 4-5-4z'/></svg>");
+        }
+        
+        body.dark-mode ::-webkit-scrollbar-button:horizontal:decrement {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='5' height='8' viewBox='0 0 5 8'><path fill='%23aaaaaa' d='M5 0l-5 4-5-4z'/></svg>");
+        }
+        
+        ::-webkit-scrollbar-button:horizontal:increment {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='5' height='8' viewBox='0 0 5 8'><path fill='%23666666' d='M0 0l5 4 5-4z'/></svg>");
+        }
+        
+        body.dark-mode ::-webkit-scrollbar-button:horizontal:increment {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='5' height='8' viewBox='0 0 5 8'><path fill='%23aaaaaa' d='M0 0l5 4 5-4z'/></svg>");
+        }
+        
+        /* Hover states for buttons */
+        ::-webkit-scrollbar-button:hover {
+            background-color: #E5E5E5;
+        }
+        
+        body.dark-mode ::-webkit-scrollbar-button:hover {
+            background-color: #3a3a3a;
+        }
+        
+        ::-webkit-scrollbar-button:active {
+            background-color: #D5D5D5;
+            box-shadow: inset 1px 1px 0 rgba(0,0,0,0.1);
+        }
+        
+        body.dark-mode ::-webkit-scrollbar-button:active {
+            background-color: #4a4a4a;
+        }
+        
+        /* Windows 7 style focus outline */
+        :focus {
+            outline: 2px solid #7EB6EA;
+            outline-offset: 2px;
+            box-shadow: 0 0 8px rgba(126, 182, 234, 0.6);
+        }
+        
+        /* Windows 7 style link hover */
+        a {
+            color: #0066CC;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+            text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+        }
+        
+        body.dark-mode a {
+            color: #4a9bff;
+            text-shadow: none;
+        }
+        
+        a:hover {
+            color: #004499;
+            text-decoration: underline;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.9);
+        }
+        
+        body.dark-mode a:hover {
+            color: #7eb6ea;
+        }
+        
+        /* Windows 7 style animations */
+        @keyframes windowsFadeIn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes windowsPulse {
+            0% { box-shadow: 0 0 0 0 rgba(126, 182, 234, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(126, 182, 234, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(126, 182, 234, 0); }
+        }
+        
+        /* Additional Windows 7 effects */
+        .window {
+            animation: windowsFadeIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .button.highlight {
+            animation: windowsPulse 1.5s infinite;
+        }
+        
+        /* Image modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s ease;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #bbb;
+            transform: scale(1.1);
+        }
+        
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+        
+        .dark-mode-toggle:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .dark-mode-toggle i {
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <!-- Image modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <div class="window" id="mainWindow">
+        <div class="title-bar">
+            VulcanoClient Installation Guide
+            <button class="dark-mode-toggle" id="darkModeToggle">
+                <i>☀️</i>
+            </button>
+        </div>
+        <div class="content">
+            <h1>VulcanoClient [VulcanoTechCraft compatible edition]</h1>
+            
+            <div class="note">
+                <strong>Are you playing cracked (TLauncher) or premium (Standard Minecraft launcher)?</strong>
+                <p>Select your version below to see the appropriate installation instructions.</p>
+            </div>
+
+            <div class="tabs">
+                <div class="tab active" onclick="openTab('premium')">Premium Installation</div>
+                <div class="tab" onclick="openTab('cracked')">Cracked Installation</div>
+            </div>
+
+            <div id="premium" class="tab-content active">
+                <h2>Premium Installation Guide</h2>
+                
+                <div class="step">
+                    <h3>Step 1: Downloading required files</h3>
+                    <p>First you need to download the modpack from this link:</p>
+                    <a href="https://github.com/VulcanoSoftware/vulcanocraft_resourcepack/raw/refs/heads/main/VulcanoTechCraft.zip" class="button highlight">Download Modpack</a>
+                    
+                    <p>After that you need to make sure if you installed the CurseForge launcher. If you haven't already, download it from this website:</p>
+                    <a href="https://www.curseforge.com/download/app" class="button">Download CurseForge</a>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding1.png" alt="CurseForge download page">
+                        <p class="caption">When you are on the website, click the download standalone button</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Step 2: Installing the files</h3>
+                    <p>When the file is downloaded, open it:</p>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding2.png" alt="CurseForge installer welcome screen">
+                        <p class="caption">Click next</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding3.png" alt="CurseForge installer terms">
+                        <p class="caption">Tick the box and click next</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding4.png" alt="CurseForge installer privacy settings">
+                        <p class="caption">Click accept & install</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Step 3: Setting it up</h3>
+                    <p>Once here, click on import:</p>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding5.png" alt="CurseForge main screen">
+                        <p class="caption">Click on import</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding6.png" alt="Import profile screen">
+                        <p class="caption">Click choose zip file</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding7.png" alt="File selection screen">
+                        <p class="caption">Double click on VulcanoTechCraft.zip</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding8.png" alt="Modpack installed">
+                        <p class="caption">Click on the play button</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding9.png" alt="Play screen">
+                        <p class="caption">Click play</p>
+                    </div>
+                </div>
+                
+                <div class="note">
+                    <h3>Have fun!</h3>
+                </div>
+            </div>
+
+            <div id="cracked" class="tab-content">
+                <h2>Cracked Installation Guide</h2>
+                
+                <div class="step">
+                    <h3>Step 1: Downloading required files</h3>
+                    <p>First you need to download the modpack from this link:</p>
+                    <a href="https://github.com/VulcanoSoftware/vulcanocraft_resourcepack/releases/download/1.0/vulcanotechcraftprism.zip" class="button highlight">Download Modpack</a>
+                    
+                    <p>After that you need to make sure if you installed the Prism launcher. If you haven't already, download it from this website:</p>
+                    <a href="https://github.com/Diegiwg/PrismLauncher-Cracked/releases/" class="button">Download Prism Launcher</a>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding10.png" alt="Prism Launcher download page">
+                        <p class="caption">Click the button that says something like "PrismLauncher-Windows-MinGW-w64-Setup-9.4.exe"</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Step 2: Installing the files</h3>
+                    <p>When the file is downloaded, open it:</p>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding11.png" alt="Windows security warning">
+                        <p class="caption">Click on the more information button</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding12.png" alt="Windows security option">
+                        <p class="caption">Click the run anyways button</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding13.png" alt="Prism installer welcome">
+                        <p class="caption">Click next</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding14.png" alt="Prism installer terms">
+                        <p class="caption">Thick this box and click next</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding15.png" alt="Prism installer ready">
+                        <p class="caption">Click install</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding16.png" alt="Prism installer complete">
+                        <p class="caption">Click finish</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Step 3: Setting it up</h3>
+                    <p>Click add instance:</p>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding17.png" alt="Prism main screen">
+                        <p class="caption">Click add instance</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding18.png" alt="Add instance screen">
+                        <p class="caption">Click import</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding19.png" alt="Import options">
+                        <p class="caption">Click browse</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding20.png" alt="File selection">
+                        <p class="caption">Go to your downloads folder</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding21.png" alt="Modpack selection">
+                        <p class="caption">Double click on vulcanotechcraftprism.zip</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding22.png" alt="Instance confirmation">
+                        <p class="caption">Click ok</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding23.png" alt="Prism accounts">
+                        <p class="caption">Click on accounts</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding24.png" alt="Accounts menu">
+                        <p class="caption">Click on manage accounts</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding25.png" alt="Accounts management">
+                        <p class="caption">Click add offline</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding26.png" alt="Add offline account">
+                        <p class="caption">Enter the nickname you want and click ok</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding27.png" alt="Account added">
+                        <p class="caption">After that click close</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="Afbeelding28.png" alt="Instance ready">
+                        <p class="caption">Double click vulcanotechcraftprism</p>
+                    </div>
+                </div>
+                
+                <div class="note">
+                    <h3>Have fun!</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab functionality
+        function openTab(tabName) {
+            // Hide all tab contents
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // Remove active class from all tabs
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            
+            // Show the selected tab content and mark its tab as active
+            document.getElementById(tabName).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+        
+        // Add Windows 7 style hover effects dynamically
+        document.addEventListener('DOMContentLoaded', function() {
+            var buttons = document.querySelectorAll('.button');
+            buttons.forEach(function(button) {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-1px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+                button.addEventListener('mousedown', function() {
+                    this.style.transform = 'translateY(1px)';
+                });
+                button.addEventListener('mouseup', function() {
+                    this.style.transform = 'translateY(-1px)';
+                });
+            });
+            
+            // Add pulse animation to important buttons
+            var highlightButtons = document.querySelectorAll('.button.highlight');
+            setInterval(function() {
+                highlightButtons.forEach(function(button) {
+                    button.style.animation = 'windowsPulse 1.5s infinite';
+                });
+            }, 1500);
+            
+            // Image modal functionality
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("modalImage");
+            var closeBtn = document.querySelector(".close");
+            
+            // Get all image containers and add click event
+            var imageContainers = document.querySelectorAll(".image-container");
+            imageContainers.forEach(function(container) {
+                container.addEventListener("click", function() {
+                    var img = this.querySelector("img");
+                    modal.style.display = "flex";
+                    setTimeout(() => {
+                        modal.classList.add("show");
+                    }, 10);
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                });
+            });
+            
+            // Close modal when clicking X
+            closeBtn.addEventListener("click", function() {
+                modal.classList.remove("show");
+                setTimeout(() => {
+                    modal.style.display = "none";
+                }, 300);
+            });
+            
+            // Close modal when clicking outside image
+            modal.addEventListener("click", function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove("show");
+                    setTimeout(() => {
+                        modal.style.display = "none";
+                    }, 300);
+                }
+            });
+            
+            // Dark mode toggle
+            var darkModeToggle = document.getElementById("darkModeToggle");
+            darkModeToggle.addEventListener("click", function() {
+                document.body.classList.toggle("dark-mode");
+                var icon = this.querySelector("i");
+                if (document.body.classList.contains("dark-mode")) {
+                    icon.textContent = "🌙";
+                    localStorage.setItem('darkMode', 'enabled');
+                } else {
+                    icon.textContent = "☀️";
+                    localStorage.setItem('darkMode', 'disabled');
+                }
+            });
+            
+            // Check for saved dark mode preference
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add("dark-mode");
+                document.getElementById("darkModeToggle").querySelector("i").textContent = "🌙";
+            }
+        });
+    </script>
+</body>
+</html>
